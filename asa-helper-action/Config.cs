@@ -10,9 +10,9 @@ namespace AsaHelperAction
     public class StreamingJobOptions : IValidatableObject
     {
 
-        public string StreamingJobName { get; set; }
-        public string StreamingJobResourceGroup { get; set; }
-        public string StreamingJobQuery { get; set; }
+        public string? StreamingJobName { get; set; }
+        public string? StreamingJobResourceGroup { get; set; }
+        public string? StreamingJobQuery { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

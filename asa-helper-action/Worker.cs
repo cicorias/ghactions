@@ -1,34 +1,41 @@
-namespace AsaHelperAction;
+using Microsoft.Extensions.Options;
 
-public class Worker : BackgroundService
+namespace AsaHelperAction
 {
-    private readonly ILogger<Worker> _logger;
 
-    public Worker(ILogger<Worker> logger, IOptions<ReplayOrdersOptions> options, IHostApplicationLifetime hostApplicationLifetime)
+    public class Worker : BackgroundService
     {
-        _logger = logger;
-        _hostApplicationLifetime = hostApplicationLifetime;
+        private readonly ILogger<Worker> _logger;
+        private readonly StreamingJobOptions _options;
+        private readonly IHostApplicationLifetime _hostApplicationLifetime;
 
-    }
-
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-    {
-        // Your primary work here
-        _logger.LogInformation("Starting the primary work...");
-        await DoPrimaryWork();
-
-        // Stop the application after the work is done
-        _logger.LogInformation("Stopping the application");
-        _hostApplicationLifetime.StopApplication();
-    }
-
-    private async Task DoWork(CancellationToken stoppingToken)
-    {
-        if (_logger.IsEnabled(LogLevel.Information))
+        public Worker(ILogger<Worker> logger, IOptions<StreamingJobOptions> options, IHostApplicationLifetime hostApplicationLifetime)
         {
-            _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-        }
-        await Task.Delay(1000, stoppingToken);
-    }
-}
+            _logger = logger;
+            _options = options.Value;
+            _hostApplicationLifetime = hostApplicationLifetime;
 
+        }
+
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            // Your primary work here
+            _logger.LogInformation("Starting the primary work...");
+            await DoWork(stoppingToken);
+
+            // Stop the application after the work is done
+            _logger.LogInformation("Stopping the application");
+            _hostApplicationLifetime.StopApplication();
+        }
+
+        private async Task DoWork(CancellationToken stoppingToken)
+        {
+            if (_logger.IsEnabled(LogLevel.Information))
+            {
+                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+            }
+            await Task.Delay(1000, stoppingToken);
+        }
+    }
+
+}

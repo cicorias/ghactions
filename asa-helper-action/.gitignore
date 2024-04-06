@@ -482,3 +482,29 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# Logs
+logs
+*.log
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# dotenv environment variables file
+.env
+.env.test
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea
+.vscode
+*.code-workspace

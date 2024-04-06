@@ -1,0 +1,35 @@
+name: asa-helper-action
+description: updates azure streaming analytics job wrapping with a stop and start
+author: Shawn Cicoria
+
+# Define your inputs here.
+inputs:
+  job-name:
+    description: The name of the job to update
+    required: true
+  resource-group:
+    description: The resource group of the job
+    required: true
+  subscription:
+    description: The subscription of the job
+    required: true
+  job-query:
+    description: The query to update the job with
+    required: true
+  start-time:
+    description: instead of last update time
+    required: false
+    #  default: TODO
+outputs:
+  job-start-status:
+    description: The time we greeted you
+
+runs:
+  using: docker
+  image: Dockerfile
+  env:
+    JOB_NAME: ${{ inputs.job-name }}
+    RESOURCE_GROUP: ${{ inputs.resource-group }}
+    SUBSCRIPTION: ${{ inputs.subscription }}
+    JOB_QUERY: ${{ inputs.job-query }}
+    START_TIME: ${{ inputs.start-time }}

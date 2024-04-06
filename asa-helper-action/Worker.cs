@@ -2,7 +2,6 @@ using Microsoft.Extensions.Options;
 
 namespace AsaHelperAction
 {
-
     public class Worker : BackgroundService
     {
         private readonly ILogger<Worker> _logger;
@@ -14,7 +13,6 @@ namespace AsaHelperAction
             _logger = logger;
             _options = options.Value;
             _hostApplicationLifetime = hostApplicationLifetime;
-
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -37,5 +35,4 @@ namespace AsaHelperAction
             await Task.Delay(1000, stoppingToken);
         }
     }
-
 }

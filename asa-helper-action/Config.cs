@@ -10,23 +10,37 @@ namespace AsaHelperAction
     public class StreamingJobOptions : IValidatableObject
     {
 
-        public string? StreamingJobName { get; set; }
-        public string? StreamingJobResourceGroup { get; set; }
-        public string? StreamingJobQuery { get; set; }
+        public string? JobName { get; set; }
+
+        public string? ResourceGroup { get; set; }
+
+        public string? Subscription { get; set; }
+
+        public string? JobQuery { get; set; }
+
+        public string? StartTime { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (string.IsNullOrEmpty(StreamingJobName))
+            if (string.IsNullOrEmpty(JobName))
             {
-                yield return new ValidationResult("StreamingJobName is required.");
+                yield return new ValidationResult("JobName is required.");
             }
-            if (string.IsNullOrEmpty(StreamingJobResourceGroup))
+            if (string.IsNullOrEmpty(ResourceGroup))
             {
-                yield return new ValidationResult("StreamingJobResourceGroup is required.");
+                yield return new ValidationResult("ResourceGroup is required.");
             }
-            if (string.IsNullOrEmpty(StreamingJobQuery))
+            if (string.IsNullOrEmpty(Subscription))
             {
-                yield return new ValidationResult("StreamingJobQuery is required.");
+                yield return new ValidationResult("Subscription is required.");
+            }
+            if (string.IsNullOrEmpty(JobQuery))
+            {
+                yield return new ValidationResult("JobQuery is required.");
+            }
+            if (string.IsNullOrEmpty(StartTime))
+            {
+                yield return new ValidationResult("StartTime is required.");
             }
         }
     }

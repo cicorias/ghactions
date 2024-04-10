@@ -31,5 +31,5 @@ runs:
     jobOptions:JobName: ${{ inputs.job-name }}
     JobOptions:ResourceGroup: ${{ inputs.resource-group }}
     jobOptions:Subscription: ${{ inputs.subscription }}
-    jobOptionsJobQuery: ${{ inputs.job-query }}
+    jobOptions:JobQuery: ${{ inputs.job-query }}
     jobOptions:StartTime: ${{ inputs.start-time }}

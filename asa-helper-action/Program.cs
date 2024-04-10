@@ -28,7 +28,7 @@ namespace AsaHelperAction
             string? logFilePath = Environment.GetEnvironmentVariable("GITHUB_OUTPUT");
             if (logFilePath != null)
             {
-                var fileStream = new FileStream(logFilePath, FileMode.Create, FileAccess.Write, FileShare.Read);
+                var fileStream = new FileStream(logFilePath, FileMode.Append, FileAccess.ReadWrite, FileShare.ReadWrite);
                 _streamWriter = new StreamWriter(fileStream) { AutoFlush = true };
             }
 

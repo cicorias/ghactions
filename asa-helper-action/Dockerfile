@@ -18,4 +18,4 @@ RUN dotnet publish "asa-helper-action.csproj" -c $configuration -o /app/publish 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "asa-helper-action.dll"]
+ENTRYPOINT ["dotnet", "/app/publish/asa-helper-action.dll"]

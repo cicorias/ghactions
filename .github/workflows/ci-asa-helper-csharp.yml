@@ -46,7 +46,7 @@ jobs:
         id: build
         uses: docker/build-push-action@v5
         with:
-          context: actions/asa-helper-action/.
+          context: asa-helper-action/.
           push: true
           tags: ${{ env.TEST_TAG }}
 
@@ -75,7 +75,7 @@ jobs:
 
       - name: Test Local Action
         id: test-action
-        uses: ./actions/asa-helper-action/
+        uses: ./asa-helper-action/
         with:
           job-name: TestJob
           resource-group: TestRG

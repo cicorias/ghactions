@@ -5,12 +5,12 @@ on:
     branches:
       - main
     paths:
-      - 'actions/asa-helper-action/**'
+      - 'asa-helper-action/**'
   push:
     branches:
       - main
-    # paths:
-    #   - 'actions/asa-helper-action/**'
+    paths:
+      - 'asa-helper-action/**'
 
 permissions:
   contents: read
@@ -56,10 +56,9 @@ jobs:
           INPUT_WHO_TO_GREET: Mona Lisa Octocat
         run: |
           docker run \
-            --env INPUT_WHO_TO_GREET="${{ env.INPUT_WHO_TO_GREET }}" \
-            --env jobOptions:JobName=TestJob \
-            --env JobOptions:ResourceGroup=TestRG \
-            --env JobOptions:SubscriptionId=TestSubId \
+            --env jobOptions:JobName="TestJob" \
+            --env jobOptions:ResourceGroup="TestRG" \
+            --env jobOptions:SubscriptionId="TestSubId" \
             --env jobOptions:JobQuery="select *" \
             --env jobOptions:StartTime="2022-01-01T00:00:00Z" \
             --rm ${{ env.TEST_TAG }}
